@@ -1,0 +1,5 @@
+crypto:
+  password: mysecret
+ip: 10.0.0.1
+peers:
+  - REMOTE_HOST:PORT
