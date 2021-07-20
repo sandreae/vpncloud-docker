@@ -12,11 +12,9 @@ RUN apt-get update \
 WORKDIR /opt
 
 COPY files/vpncloud_${VPNCLOUD_VERSION}_amd64.deb /opt/vpncloud_${VPNCLOUD_VERSION}_amd64.deb
-COPY files/vpncloud.yml /etc/vpncloud/vpncloud.yml
-COPY entrypoint.sh /entrypoint.sh
 
 RUN dpkg -i vpncloud_${VPNCLOUD_VERSION}_amd64.deb
 
-RUN chmod +x /entrypoint.sh
+EXPOSE 3210/udp
 
-ENTRYPOINT [ "/entrypoint.sh" ]
+CMD ["vpncloud", "--password", "badpassword123", "--ip", "10.0.0.100"]
